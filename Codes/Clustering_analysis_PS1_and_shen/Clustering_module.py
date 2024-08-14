@@ -388,7 +388,7 @@ def find_xi_s(ra, dec, red, s_bins, file_name=None, rand_ra = None, rand_dec = N
     xi_s_masked[unfin_pos] = ma.masked
 
     with np.errstate(divide='ignore', invalid='ignore'):
-        xi_s_error = (1 + np.absolute(xi_s))/np.sqrt(np.minimum(s_hist, len(ra)))
+        xi_s_error = (1 + xi_s)/np.sqrt(np.minimum(s_hist, len(ra)))
     xi_s_masked_error = ma.array(xi_s_error)
     xi_s_masked_error[unfin_pos] = ma.masked
 
