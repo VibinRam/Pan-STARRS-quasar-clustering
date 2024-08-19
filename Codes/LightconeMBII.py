@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 from scipy.interpolate import interp1d
 # Import the cosmology
 from astropy.cosmology import FlatLambdaCDM
+# Import the LogNorm object
+from matplotlib.colors import LogNorm
 
 # Define the data directory
 DATA_DIRECTORY = "/home/vibin/MyFolder/WorkDesk/DP2/PhdProjects/Complicor/Data/MBIIbhIncompOverlf/"
@@ -254,7 +256,7 @@ plt.xticks(red_com, redshifts + 1)
 plt.xlabel('z + 1')
 
 # Save the figure to the plots directory
-plt.savefig(PLOT_DIRECTORY + 'NumberDensityLightcone.png', dpi=300)
+plt.savefig(PLOT_DIRECTORY + 'NumberDensityLightcone.pdf')
 
 plt.show()
 
@@ -264,13 +266,38 @@ Lightcone_2d = np.average(Lightcone[25:30,:,:], axis=0) #np.sum(Lightcone, axis=
 # Plot the 2d projection of the lightcone
 # figure size
 
+#-----
+
 plt.style.use('MNRAS_Style.mplstyle')
-plt.figure(figsize=(14, 5))
-plt.imshow(Lightcone_2d, origin='lower',cmap='viridis', extent=[new_z_axis[0], new_z_axis[-1], x_range[0], x_range[1]], norm='log')
-plt.xlabel('z (Mpc/h)')
-plt.ylabel('y (Mpc/h)')
-#give label to colorbar
-plt.colorbar().set_label('N(y, z) - number of black holes')
+fig, ax = plt.subplots(figsize=(15, 5))
+
+# increase the font size
+plt.rcParams.update({'font.size': 18})
+
+# Get the minimum and maximum values of the data
+vmin = np.min(1 + Lightcone_2d)
+vmax = np.max(1 + Lightcone_2d)
+
+# Plot the data with imshow
+cax = ax.imshow(1 + Lightcone_2d, origin='lower', cmap='viridis', extent=[new_z_axis[0], new_z_axis[-1], x_range[0], x_range[1]], norm=LogNorm(vmin=vmin, vmax=vmax))
+
+ax.set_xlabel('z (Mpc/h)')
+ax.set_ylabel('y (Mpc/h)')
+
+# modify the color bar ticks by adding -1 to each tick
+
+# Create the colorbar
+cbar = fig.colorbar(cax, ticks=[1, 2, 3])
+cbar.ax.set_yticklabels([0, 1, 2])
+cbar.set_label('N(y, z) - number of black holes')
+
+# Set the colorbar ticks to show N instead of 1 + N
+# Get the current ticks
+# ticks = cbar.get_ticks()
+
+# # Subtract 1 from each tick to show N instead of 1 + N
+# cbar.set_ticks(ticks)
+# cbar.set_ticklabels([int(t - 1) for t in ticks])
 
 # make the plot square
 plt.gca().set_aspect('auto')
@@ -284,10 +311,17 @@ plt.xticks([])
 plt.xticks(red_com, redshifts + 1)
 plt.xlabel('z + 1')
 
-# Save the figure to the plots directory
-plt.savefig(PLOT_DIRECTORY + '2dProjectionLightcone.png', dpi=300)
+# Getting the box aspect ratio of the plot, so that the we can determine the x limit inorder to make the pixels square.
+
+plt.xlim(red_com[0], red_com[0] + 300)
+plt.grid(visible=False)
+
+# Save the figure to a pdf file
+plt.savefig(PLOT_DIRECTORY + 'Lightcone2d.pdf')
 
 plt.show()
+
+#---
 
 # Making the catalog of the lightcone
 # Define the number of black holes in each pixel
