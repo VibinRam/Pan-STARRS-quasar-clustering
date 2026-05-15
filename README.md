@@ -123,6 +123,30 @@ Key results include:
 
 The analysis demonstrates the challenges of clustering measurements in small high-redshift quasar samples while remaining broadly consistent with increasing clustering trends at earlier cosmic epochs. :contentReference[oaicite:1]{index=1}
 
+# Example Results
+
+## Redshift-Space Correlation Function
+
+Measured redshift-space two-point correlation function for the PS1 quasar sample, together with the best-fit MCMC power-law clustering model and confidence interval.
+
+![PS1 Clustering Measurement](plots/red_clust_ps1.png)
+
+---
+
+## MCMC Posterior Constraints
+
+Posterior distributions for the clustering correlation length \(s_0\) and clustering slope \(\delta\) obtained using MCMC fitting.
+
+![MCMC Posterior](plots/ps1_corner.png)
+
+---
+
+## Comparison with Previous Literature
+
+Comparison of the inferred clustering parameters with lower-redshift quasar clustering measurements from Shen et al. (2007).
+
+![Literature Comparison](plots/z6_red_clust_comp_with_lit.png)
+
 ---
 
 # Current Status
