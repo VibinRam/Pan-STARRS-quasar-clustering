@@ -129,7 +129,7 @@ The analysis demonstrates the challenges of clustering measurements in small hig
 
 Measured redshift-space two-point correlation function for the PS1 quasar sample, together with the best-fit MCMC power-law clustering model and confidence interval.
 
-![PS1 Clustering Measurement](Plots/DP2_Report_Plots/red_clust_ps1.png)
+![PS1 Clustering Measurement](Plots/DP2_Report_plots/red_clust_ps1.png)
 
 ---
 
@@ -137,7 +137,7 @@ Measured redshift-space two-point correlation function for the PS1 quasar sample
 
 Posterior distributions for the clustering correlation length \(s_0\) and clustering slope \(\delta\) obtained using MCMC fitting.
 
-![MCMC Posterior](Plots/DP2_Report_Plots/ps1_corner.png)
+![MCMC Posterior](Plots/DP2_Report_plots/ps1_corner.png)
 
 ---
 
@@ -145,7 +145,7 @@ Posterior distributions for the clustering correlation length \(s_0\) and cluste
 
 Comparison of the inferred clustering parameters with lower-redshift quasar clustering measurements from Shen et al. (2007).
 
-![Literature Comparison](Plots/DP2_Report_Plots/z6_red_clust_comp_with_lit.png)
+![Literature Comparison](Plots/DP2_Report_plots/z6_red_clust_comp_with_lit.png)
 
 ---
 
